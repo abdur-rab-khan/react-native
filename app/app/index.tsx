@@ -1,11 +1,12 @@
-import CombinationCore from '@/components/CombinationCore'
+import TImage from '@/components/tuto/Image'
 import React from 'react'
-import { View } from 'react-native'
 
 export default function index() {
     return (
-        <View>
-            <CombinationCore />
-        </View>
+        <>
+            {/* <TView /> */}
+            {/* <TText /> */}
+            <TImage />
+        </>
     )
 }

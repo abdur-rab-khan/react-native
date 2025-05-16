@@ -2,6 +2,11 @@
 
 > React Native is an **open source** library to build _android_, _ios_, _web_ application using react js. React JS use to build appearance and UI of the application, Javascript/Typescript to implement native compatibilities.
 
+- [Core Components and Native Components](#core-components-and-native-components)
+  - [View and mobile development](#view-and-mobile-development)
+  - [Native Components](#native-components)
+  - [Core Components](#core-components)
+
 ## View and mobile development
 
 In both _android_ and _ios_. View is the building block of our application, It is small rectangle on the screen that can be use to display text, image, response to user, line of text or button. Some views can also contain nested views. Views are same as **_div_** in web development.
@@ -19,13 +24,14 @@ In both _android_ and _ios_. View is the building block of our application, It i
 ## Core Components
 
 React Native have many core components to build full-fledged application. Following are the important and frequently used components:
-| React Native UI Component | Android View | iOS View | Web Analog | Description |
-| --- | --- | --- | --- | --- |
-| `<View>` | `<ViewGroup>` | `<UIView>` | A non-scrolling `<div>` | A container that supports layout with flexbox, style, some touch handling, and accessibility controls |
-| `<Text>` | `<TextView>` | `<UITextView>` | `<p>` | Displays, styles, and nests strings of text and even handles touch events |
-| `<Image>` | `<ImageView>` | `<UIImageView>` | `<img>` | Displays different types of images |
-| `<ScrollView>` | `<ScrollView>` | `<UIScrollView>` | `<div>` | A generic scrolling container that can contain multiple components and views |
-| `<TextInput>` | `<EditText>` | `<UITextField>` | `<input type="text">` | Allows the user to enter text |
+
+| React Native UI Component | Android View   | iOS View         | Web Analog              | Description                                                                                           |
+| ------------------------- | -------------- | ---------------- | ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| `<View>`                  | `<ViewGroup>`  | `<UIView>`       | A non-scrolling `<div>` | A container that supports layout with flexbox, style, some touch handling, and accessibility controls |
+| `<Text>`                  | `<TextView>`   | `<UITextView>`   | `<p>`                   | Displays, styles, and nests strings of text and even handles touch events                             |
+| `<Image>`                 | `<ImageView>`  | `<UIImageView>`  | `<img>`                 | Displays different types of images                                                                    |
+| `<ScrollView>`            | `<ScrollView>` | `<UIScrollView>` | `<div>`                 | A generic scrolling container that can contain multiple components and views                          |
+| `<TextInput>`             | `<EditText>`   | `<UITextField>`  | `<input type="text">`   | Allows the user to enter text                                                                         |
 
 - **Example**
 
