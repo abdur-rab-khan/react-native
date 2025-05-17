@@ -1,9 +1,36 @@
-import React from 'react'
-import { Image, StyleSheet, View } from 'react-native'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 
 export default function TImage() {
+    const [imageSize, setImageSize] = useState<{ height: number, width: number }>();
+
+
+    useEffect(() => {
+        const uri = "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
+
+        Image.prefetch(uri).then((v) => {
+            if (v) {
+                console.log("Image is prefetched successfully")
+            } else {
+                console.log("Image is not prefetched")
+            }
+        })
+
+        Image.getSize(
+            uri,
+            (w, h) => {
+                setImageSize({
+                    height: h,
+                    width: w
+                })
+            },
+            (e) => console.error(e)
+        )
+    }, [])
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={style.container}>
@@ -36,6 +63,20 @@ export default function TImage() {
                         source={require("@/assets/images/favicon.png")}
                     />
                 </View>
+
+
+                {/* Prefetching the image */}
+                <Image
+                    style={{ height: imageSize?.height, width: imageSize?.width }}
+                    source={{
+                        uri: "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    }}
+                    onProgress={({ nativeEvent }) => {
+                        const { loaded, total } = nativeEvent;
+                        console.log(`Loaded: ${loaded} -- Total: ${total}`)
+                    }}
+                    onLoadEnd={() => console.log("Image is loaded.")}
+                />
             </SafeAreaView>
         </SafeAreaProvider>
     )

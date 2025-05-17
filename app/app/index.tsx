@@ -1,4 +1,4 @@
-import TImage from '@/components/tuto/Image'
+import TInput from '@/components/tuto/Input'
 import React from 'react'
 
 export default function index() {
@@ -6,7 +6,9 @@ export default function index() {
         <>
             {/* <TView /> */}
             {/* <TText /> */}
-            <TImage />
+            {/* <TImage /> */}
+            {/* <FullImageCard /> */}
+            <TInput />
         </>
     )
 }

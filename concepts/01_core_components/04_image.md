@@ -3,6 +3,7 @@
 > In React Native **`<Image>`** is a component used to display an Image including, **Network Image**, **static resource**, **temporary local image** and **image from disk**, such as **camera roll**.
 
 - [Image in React Native](#image-in-react-native)
+  - [Image Component](#image-component)
   - [GIF and WebP support on Android](#gif-and-webp-support-on-android)
   - [Props](#props)
     - [Important](#important)
@@ -44,57 +45,7 @@
       - [6. `resolveAssetSource()`](#6-resolveassetsource)
     - [ImageSource](#imagesource)
 
-```ts
-import React from "react";
-import { Image, StyleSheet } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-
-export default function TImage() {
-  return (
-    <SafeAreaProvider>
-      <SafeAreaView style={style.container}>
-        {/* Loading from local storage */}
-        <Image
-          style={style.tinyLogo}
-          source={require("@/assets/images/favicon.png")}
-        />
-
-        {/* Loading from uri */}
-        <Image
-          style={style.logo}
-          source={{
-            uri: "https://reactnative.dev/img/tiny_logo.png",
-          }}
-        />
-
-        {/* Loading from data */}
-        <Image
-          style={style.logo}
-          source={{
-            uri: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==",
-          }}
-        />
-      </SafeAreaView>
-    </SafeAreaProvider>
-  );
-}
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
-  },
-  logo: {
-    height: 66,
-    width: 58,
-  },
-});
-```
-
-- We can add **`style`** to an image:
+## Image Component
 
 ```ts
 import React from "react";
@@ -177,11 +128,22 @@ dependencies {
 
 #### 3. `srcSet`
 
+- A string representing list of **`url's`** of all possible screen sizes and resolution of an image.
+- **Example:** \*\*`Example: srcSet={'<https://reactnative.dev/img/tiny_logo.png> 1x, <https://reactnative.dev/img/header_logo.svg> 2x'}
+
+`
+
 #### 4. [`style`](../02_style/02_image.md)
 
 #### 5. `testID`
 
 #### 6. `tintColor`
+
+- Change the color of all non-transparent pixels.
+
+| Type     |
+| -------- |
+| `string` |
 
 #### 7. `height`
 
@@ -237,21 +199,57 @@ dependencies {
 
 #### 1. `onError`
 
+- Invoked when error is happen during load time.
+
 #### 2. `onLayout`
+
+- Invoked on mount and on layout changes.
 
 #### 3. `onLoad`
 
+- Invoked when load completes successfully.
+
 #### 4. `onLoadEnd`
 
+- Invoked when image is loaded successfully.
+
 #### 5. `onLoadStart`
+
+- Invoked when image is start loading
 
 #### 6. `onPartialLoad` -- IOS
 
 #### 7. `onProgress`
 
+- It will return the progress of the image during the loaded time. It invoke when image is start downloading.
+
+```ts
+<Image
+  style={{ height: imageSize?.height, width: imageSize?.width }}
+  source={{
+    uri: "https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  }}
+  onProgress={({ nativeEvent }) => {
+    const { loaded, total } = nativeEvent;
+    console.log(`Loaded: ${loaded} -- Total: ${total}`);
+  }}
+  onLoadEnd={() => console.log("Image is loaded.")}
+/>
+```
+
 ### Others
 
 #### 1. `progressiveRenderingEnabled` -- Android
+
+- **`True`**, when you want to display a low-quality blurry version of the image during downloading of the image. After downloading we will got full version of an image.
+
+```ts
+<Image
+  source={{ uri: "https://example.com/image.jpg" }}
+  style={{ width: 300, height: 200 }}
+  progressiveRenderingEnabled={true}
+/>
+```
 
 #### 2. `referrerPolicy`
 
@@ -279,12 +277,122 @@ dependencies {
 
 #### 2. `getSize()`
 
+- It returns the size of the given uri. because React native does not know about the size of image. **`Image.getSize()`** allows us to retrieve actual dimension (height and width) of the image asynchronously for the sake of adjustment of layout.
+
+```ts
+Image.getSize(
+  imageUrl,
+  (width, height) => {
+    setImageSize({ width, height });
+  },
+  (error) => {
+    console.error("Failed to get image size:", error);
+  }
+);
+```
+
 #### 3. `getSizeWithHeaders()`
+
+- It is the extension version of **`Image.getSize()`**, It is introduce to handle cases where the image requires https headers (like authentication tokens of custom headers) in the request to access the image.
+
+```js
+useEffect(() => {
+  const imageUrl = "https://secure.example.com/protected-image.jpg";
+  const headers = {
+    Authorization: "Bearer YOUR_ACCESS_TOKEN_HERE",
+    "Custom-Header": "ExampleValue",
+  };
+
+  Image.getSizeWithHeaders(
+    imageUrl,
+    headers,
+    (width, height) => {
+      setImageSize({ width, height });
+    },
+    (error) => {
+      console.error("Error fetching image size:", error);
+    }
+  );
+}, []);
+```
 
 #### 4. `prefetch()`
 
+- **`prefetch()`** the remote image for later use by downloading it to the disk cache. To improve performance and user-experience by avoiding delays when the image first displayed.
+- It will automatically detect whether the image if cached or not if yes it load instantly from cache otherwise it will cache it.
+
+```ts
+const [ready, setReady] = useState(false);
+
+useEffect(() => {
+  Image.prefetch("https://example.com/photo.jpg")
+    .then(() => setReady(true))
+    .catch(() => setReady(true)); // Fail-safe: continue even if failed
+}, []);
+
+return (
+  <View>
+    {ready ? (
+      <Image
+        source={{ uri: "https://example.com/photo.jpg" }}
+        style={{ width: 200, height: 200 }}
+      />
+    ) : (
+      <Text>Loading image...</Text>
+    )}
+  </View>
+);
+```
+
 #### 5. `queryCache()`
 
+- Checks whether specified image URIs are cached locally.
+- Returns a Promise that resolves to a mapping of URI to cache status (`'memory'`, `'disk'`, or `'none'`).
+- If an image is cached, it will return the mapped URI; otherwise, it returns `null`.
+
+```js
+Image.queryCache([
+  "https://example.com/image1.jpg",
+  "https://example.com/image2.jpg",
+])
+  .then((cachedImages) => {
+    console.log("Cached images:", cachedImages);
+    // Example output: { 'https://example.com/image1.jpg': 'disk', 'https://example.com/image2.jpg': 'none' }
+  })
+  .catch((error) => {
+    console.error("Error querying cache:", error);
+  });
+```
+
 #### 6. `resolveAssetSource()`
+
+- It is a utility method used to get the metadata of a static (local) image.
+- It does not work with remote image.
+
+```ts
+import React from "react";
+import { View, Text, Image } from "react-native";
+
+const logo = require("./assets/logo.png");
+
+const ImageInfoExample = () => {
+  const imageInfo = Image.resolveAssetSource(logo);
+
+  return (
+    <View>
+      <Text>URI: {imageInfo.uri}</Text>
+      <Text>Width: {imageInfo.width}</Text>
+      <Text>Height: {imageInfo.height}</Text>
+
+      <Image
+        source={logo}
+        style={{ width: imageInfo.width, height: imageInfo.height }}
+      />
+    </View>
+  );
+};
+
+export default ImageInfoExample;
+```
 
 ### ImageSource
