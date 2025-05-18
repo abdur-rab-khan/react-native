@@ -1,4 +1,4 @@
-import TInput from '@/components/tuto/Input'
+import TScrollView from '@/components/tuto/ScrollView'
 import React from 'react'
 
 export default function index() {
@@ -8,7 +8,10 @@ export default function index() {
             {/* <TText /> */}
             {/* <TImage /> */}
             {/* <FullImageCard /> */}
-            <TInput />
+            {/* <TInput /> */}
+            {/* <TButton /> */}
+            {/* <TPressable /> */}
+            <TScrollView />
         </>
     )
 }

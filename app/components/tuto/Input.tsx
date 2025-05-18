@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { Alert, StyleSheet, Text, TextInput } from 'react-native'
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import React, { useState } from 'react';
+import { Alert, StyleSheet, Text, TextInput } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function TInput() {
     const [text, setText] = useState("Useless Text")
@@ -15,9 +15,6 @@ export default function TInput() {
                     value={text}
                     onChangeText={(t) => setText(t)}
                     onSubmitEditing={() => Alert.alert("Submitting...", "Input text is going to submit.")}
-                    autoCapitalize='words'
-                    secureTextEntry
-                    selectTextOnFocus
                 />
                 <Text>
                     {'\n'}

@@ -8,6 +8,66 @@
 
 - [Input in React Native](#input-in-react-native)
   - [`TextInput`](#textinput)
+  - [Props](#props)
+    - [Important](#important)
+      - [9. `value`](#9-value)
+      - [1. `defaultValue`](#1-defaultvalue)
+      - [9. `editable`](#9-editable)
+      - [9. `inputMode`](#9-inputmode)
+      - [9. `keyboardType`](#9-keyboardtype)
+      - [9. `maxLength`](#9-maxlength)
+      - [9. `multiline`](#9-multiline)
+      - [9. `numberOfLines`](#9-numberoflines)
+      - [9. `placeholder`](#9-placeholder)
+      - [9. `placeHolderTextColor`](#9-placeholdertextcolor)
+      - [9. `readOnly`](#9-readonly)
+      - [9. `secureEntry`](#9-secureentry)
+      - [9. `selection`](#9-selection)
+      - [9. `selectionColor`](#9-selectioncolor)
+      - [9. `selectionHandleColor`](#9-selectionhandlecolor)
+      - [9. `selectTextOnFocus`](#9-selecttextonfocus)
+      - [9. `spellCheck` -- IOS](#9-spellcheck----ios)
+      - [9. `submitBehavior`](#9-submitbehavior)
+      - [9. `textAlign`](#9-textalign)
+      - [9. `textContentType`](#9-textcontenttype)
+      - [9. `passwordRules` -- IOS](#9-passwordrules----ios)
+      - [9. `textBreakStrategy` -- Android](#9-textbreakstrategy----android)
+      - [9. `underlineColorAndroid`](#9-underlinecolorandroid)
+    - [Events](#events)
+      - [1. `onBlur`](#1-onblur)
+      - [9. `onChange`](#9-onchange)
+      - [9. `onChangeText`](#9-onchangetext)
+      - [9. `onContentSizeChange`](#9-oncontentsizechange)
+      - [9. `onEndEditing`](#9-onendediting)
+      - [9. `onPressIn`](#9-onpressin)
+      - [9. `onPressOut`](#9-onpressout)
+      - [9. `onFocus`](#9-onfocus)
+      - [9. `onKeyPress`](#9-onkeypress)
+      - [9. `onScroll`](#9-onscroll)
+      - [9. `onSubmitEnter`](#9-onsubmitenter)
+    - [Others](#others)
+      - [1. `allowFontScaling`](#1-allowfontscaling)
+      - [2. `allowFontScaling`](#2-allowfontscaling)
+      - [3. `autoComplete`](#3-autocomplete)
+      - [3. `autoCorrect`](#3-autocorrect)
+      - [4. `autoFocus`](#4-autofocus)
+      - [5. `caretHidden`](#5-carethidden)
+      - [6. `contextMenuHidden`](#6-contextmenuhidden)
+      - [7. `cursorColor`](#7-cursorcolor)
+      - [8. `disableFullscreenUI`](#8-disablefullscreenui)
+      - [9. `enterKeyHint`](#9-enterkeyhint)
+      - [10. `importantForAutofill` -- Android](#10-importantforautofill----android)
+      - [10. `inlineImageLeft` -- Android](#10-inlineimageleft----android)
+      - [11. `inlineImagePadding` -- Android](#11-inlineimagepadding----android)
+      - [12. `keyboardAppearance` -- IOS](#12-keyboardappearance----ios)
+      - [13. `maxFontSizeMultiplier`](#13-maxfontsizemultiplier)
+      - [13. `returnKeyLabel`](#13-returnkeylabel)
+      - [13. `returnKeyType`](#13-returnkeytype)
+    - [Method](#method)
+      - [13. `.focus()`](#13-focus)
+      - [13. `.blur()`](#13-blur)
+      - [13. `.clear()`](#13-clear)
+      - [13. `.isFocused()`](#13-isfocused)
 
 ## `TextInput`
 
@@ -73,75 +133,127 @@ const style = StyleSheet.create({
 
 ### Important
 
-#### 9. `value`
+#### 1. `value`
 
-#### 1. `defaultValue`
+- It is the text value which is show into the **`TextInput`** you change them as well.
 
-#### 9. `editable`
+#### 2. `defaultValue`
 
-#### 9. `inputMode`
+- **`defaultValue`** is a props in **`TextInput`** that is used to show the default text into the input
 
-#### 9. `keyboardType`
+#### 3. `editable`
 
-#### 9. `maxLength`
+- **`editable`** using this you can prevent to change into the input, In some cases you does not want to allow user to change.
 
-#### 9. `multiline`
+#### 4. `inputMode`
 
-#### 9. `numberOfLines`
+- Same as in web, It determines which keyboard mode we have to show such as **`numberic`** (It allow to write only number), there are many more.
+- Mostly use for web.
+
+- Supports the following types:
+  1. `none`
+  2. `text`
+  3. `decimal`
+  4. `numeric`
+  5. `tel`
+  6. `search`
+  7. `email`
+  8. `url`
+
+#### 5. `keyboardType`
+
+- It is same as above to determine which keyboard we have to show it.
+
+- Support the following types:
+
+  1. `default`
+  2. `number-pad`
+  3. `decimal-pad`
+  4. `numeric`
+  5. `email-address`
+  6. `phone-pad`
+  7. `url`
+
+- IOS - ONLY
+
+  1. `ascii-capable`
+  2. `numbers-and-punctuation`
+  3. `name-phone-pad`
+  4. `twitter`
+  5. `web-search`
+
+- Android - ONLY
+  1. `visible-password`
+
+#### 6. `maxLength`
+
+#### 7. `multiline`
+
+- **`true`**, If you want to make input box similar like textArea in html.
+
+#### 8. `numberOfLines`
 
 #### 9. `placeholder`
 
-#### 9. `placeHolderTextColor`
+#### 10. `placeHolderTextColor`
 
-#### 9. `readOnly`
+#### 11. `readOnly`
 
-#### 9. `secureEntry`
+#### 12. `secureEntry`
 
-#### 9. `selection`
+- **`true`**, If you want to hide the text that want add into the input. It is useful when you want to add password.
 
-#### 9. `selectionColor`
+#### 13. `selection`
 
-#### 9. `selectionHandleColor`
+#### 14. `selectionColor`
 
-#### 9. `selectTextOnFocus`
+#### 15. `selectionHandleColor`
 
-#### 9. `spellCheck` -- IOS
+#### 16. `selectTextOnFocus`
 
-#### 9. `submitBehavior`
+#### 17. `spellCheck` -- IOS
 
-#### 9. `textAlign`
+#### 18. `submitBehavior`
 
-#### 9. `textContentType`
+#### 19. `textAlign`
 
-#### 9. `passwordRules` -- IOS
+#### 20. `textContentType` -- IOS
 
-#### 9. `textBreakStrategy` -- Android
+#### 21. `passwordRules` -- IOS
 
-#### 9. `underlineColorAndroid`
+#### 22. `textBreakStrategy` -- Android
+
+#### 23. `underlineColorAndroid`
 
 ### Events
 
 #### 1. `onBlur`
 
-#### 9. `onChange`
+- The **`callback`** function will call when you get-out directly from the input.
 
-#### 9. `onChangeText`
+#### 2. `onChange`
 
-#### 9. `onContentSizeChange`
+- **`callback`** function will call when text input text changes.
 
-#### 9. `onEndEditing`
+#### 3. `onChangeText`
 
-#### 9. `onPressIn`
+- **`callback`** function will call when text input text changes. It will return single string from the callback.
 
-#### 9. `onPressOut`
+#### 4. `onContentSizeChange`
 
-#### 9. `onFocus`
+#### 5. `onEndEditing`
+
+#### 6. `onPressIn`
+
+#### 7. `onPressOut`
+
+#### 8. `onFocus`
 
 #### 9. `onKeyPress`
 
-#### 9. `onScroll`
+#### 10. `onScroll`
 
-#### 9. `onSubmitEnter`
+#### 11. `onSubmitEnter`
 
 ### Others
 
@@ -151,40 +263,40 @@ const style = StyleSheet.create({
 
 #### 3. `autoComplete`
 
-#### 3. `autoCorrect`
+#### 4. `autoCorrect`
 
-#### 4. `autoFocus`
+#### 5. `autoFocus`
 
-#### 5. `caretHidden`
+#### 6. `caretHidden`
 
-#### 6. `contextMenuHidden`
+#### 7. `contextMenuHidden`
 
-#### 7. `cursorColor`
+#### 8. `cursorColor`
 
-#### 8. `disableFullscreenUI`
+#### 9. `disableFullscreenUI`
 
-#### 9. `enterKeyHint`
+#### 10. `enterKeyHint`
 
-#### 10. `importantForAutofill` -- Android
+#### 11. `importantForAutofill` -- Android
 
-#### 10. `inlineImageLeft` -- Android
+#### 12. `inlineImageLeft` -- Android
 
-#### 11. `inlineImagePadding` -- Android
+#### 13. `inlineImagePadding` -- Android
 
-#### 12. `keyboardAppearance` -- IOS
+#### 14. `keyboardAppearance` -- IOS
 
-#### 13. `maxFontSizeMultiplier`
+#### 15. `maxFontSizeMultiplier`
 
-#### 13. `returnKeyLabel`
+#### 16. `returnKeyLabel`
 
-#### 13. `returnKeyType`
+#### 17. `returnKeyType`
 
 ### Method
 
-#### 13. `.focus()`
+#### 1. `.focus()`
 
-#### 13. `.blur()`
+#### 2. `.blur()`
 
-#### 13. `.clear()`
+#### 3. `.clear()`
 
-#### 13. `.isFocused()`
+#### 4. `.isFocused()`
