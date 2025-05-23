@@ -1,4 +1,4 @@
-import TScrollView from '@/components/tuto/ScrollView'
+import TFlatList from '@/components/tuto/FlatList'
 import React from 'react'
 
 export default function index() {
@@ -11,7 +11,9 @@ export default function index() {
             {/* <TInput /> */}
             {/* <TButton /> */}
             {/* <TPressable /> */}
-            <TScrollView />
+            {/* <TScrollView /> */}
+            <TFlatList />
+            {/* <Carousel /> */}
         </>
     )
 }
