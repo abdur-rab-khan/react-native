@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StatusBar, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { FlatList, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 
 const DATA = [
@@ -15,7 +14,43 @@ const DATA = [
     {
         id: '58694a0f-3da1-471f-bd96-145571e29d72',
         title: 'Third Item',
+    }, {
+        id: 'bad7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+        title: 'First Item',
     },
+    {
+        id: '3224ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+        title: 'Second Item',
+    },
+    {
+        id: '58694a0dsfsff-3da1-471f-bd96-145571e29d72',
+        title: 'Third Item',
+    }, {
+        id: 'bd7acbea-c1sfhsob1-46c2-aed5-3ad53abb28ba',
+        title: 'First Item',
+    },
+    {
+        id: '3ac68afc-c605-48dshfo3-a4f8-fbd91aa97f63',
+        title: 'Second Item',
+    },
+    {
+        id: '58694a0f-3da1-471f-bdsfhso96-145571e29d72',
+        title: 'Third Item',
+    }, {
+        id: 'bd7acbea-c1b1-46c2-aed5-3fhosfjad53abb28ba',
+        title: 'First Item',
+    },
+    {
+        id: '3ac68afc-c605-48d3-a4f8-fbd91aa9hsfhso7f63',
+        title: 'Second Item',
+    },
+    {
+        id: '58694a0f-3da1-471f-bd96-sfho145571e29d72',
+        title: 'Third Item',
+    },
+
+
+
 ];
 
 interface ItemData {
@@ -26,7 +61,6 @@ interface ItemData {
 
 
 const Item = ({ backgroundColor, item, onPress, textColor }: ItemProps) => {
-    console.log("workingll...")
     return (
         <TouchableOpacity style={[styles.item, { backgroundColor }]} onPress={onPress}>
             <Text style={[styles.title, { color: textColor }]}>
@@ -36,6 +70,7 @@ const Item = ({ backgroundColor, item, onPress, textColor }: ItemProps) => {
     )
 }
 
+const Separator = () => <View style={{ borderBottomWidth: StyleSheet.hairlineWidth, borderColor: "black", marginBlock: 8 }} />
 
 interface ItemProps {
     item: ItemData;
@@ -64,18 +99,16 @@ export default function TFlatList() {
 
 
     return (
-        <SafeAreaProvider>
-            <SafeAreaView>
-                <FlatList
-                    contentContainerStyle={styles.contentContainer}
-                    data={DATA}
-                    // renderItem={({ item }) => <Items title={item.title} />}
-                    renderItem={renderItems}
-                    keyExtractor={item => item.id}
-                    extraData={selectedId}
-                />
-            </SafeAreaView>
-        </SafeAreaProvider>
+        <FlatList
+            contentContainerStyle={styles.contentContainer}
+            data={DATA}
+            // renderItem={({ item }) => <Items title={item.title} />}
+            renderItem={renderItems}
+            keyExtractor={item => item.id}
+            extraData={selectedId}
+            progressViewOffset={100}
+            ItemSeparatorComponent={Separator}
+        />
     )
 }
 
@@ -84,7 +117,7 @@ const styles = StyleSheet.create({
         marginTop: StatusBar.currentHeight || 0,
         paddingHorizontal: 12,
         flexDirection: "column",
-        gap: 10
+        // gap: 10
     },
     item: {
         height: 100,
