@@ -1,4 +1,4 @@
-import TAppearance from '@/components/tuto/Appearance'
+import TPermissions from '@/components/Core_Components/Permissions'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
@@ -28,7 +28,14 @@ export default function index() {
             {/* </SafeAreaProvider> */}
             {/* <TShare /> */}
             {/* <PixelRatio /> */}
-            <TAppearance />
+            {/* <TAppearance /> */}
+            {/* <TModal /> */}
+            {/* <TLinking /> */}
+            {/* <OpenCustomSettings /> */}
+            {/* <SendIntents /> */}
+            <TPermissions />
+            {/* </SafeAreaView > */}
+            {/* </SafeAreaProvider> */}
         </React.Fragment>
     )
 }
@@ -36,6 +43,10 @@ export default function index() {
 const styles = StyleSheet.create({
     darkTheme: {
         backgroundColor: "#001f2c",
-        paddingHorizontal: 12
+        paddingHorizontal: 12,
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+        width: "100%"
     }
 })
