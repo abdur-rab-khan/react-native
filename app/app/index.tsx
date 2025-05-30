@@ -1,4 +1,5 @@
-import TPermissions from '@/components/Core_Components/Permissions'
+import TView from '@/components/Core_Components/View'
+import Notification from '@/components/Notification'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
@@ -7,7 +8,9 @@ export default function index() {
         <React.Fragment>
             {/* <SafeAreaProvider style={styles.darkTheme}> */}
             {/* <SafeAreaView> */}
-            {/* <TView /> */}
+
+            {/* ------------------- CORE COMPONENT START ----------------- */}
+            <TView />
             {/* <TText /> */}
             {/* <TImage /> */}
             {/* <FullImageCard /> */}
@@ -33,7 +36,14 @@ export default function index() {
             {/* <TLinking /> */}
             {/* <OpenCustomSettings /> */}
             {/* <SendIntents /> */}
-            <TPermissions />
+            {/* <TPermissions /> */}
+            {/* ------------------- CORE COMPONENT END ----------------- */}
+
+
+            {/* ------------------- NOTIFICATION API START----------------- */}
+            <Notification />
+            {/* ------------------- NOTIFICATION API END ----------------- */}
+
             {/* </SafeAreaView > */}
             {/* </SafeAreaProvider> */}
         </React.Fragment>

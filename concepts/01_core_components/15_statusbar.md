@@ -74,6 +74,8 @@
 
 #### 5. `translucent`
 
+#### 6. `backgroundColor`
+
 ### Methods
 
 #### 1. `popStackEntry()`
