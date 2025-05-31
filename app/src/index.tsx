@@ -1,7 +1,5 @@
-import TView from '@/components/Core_Components/View'
-import Notification from '@/components/Notification'
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import TView from './components/Core_Components/View'
 
 export default function index() {
     return (
@@ -41,7 +39,7 @@ export default function index() {
 
 
             {/* ------------------- NOTIFICATION API START----------------- */}
-            <Notification />
+            {/* <Notification /> */}
             {/* ------------------- NOTIFICATION API END ----------------- */}
 
             {/* </SafeAreaView > */}
@@ -50,13 +48,13 @@ export default function index() {
     )
 }
 
-const styles = StyleSheet.create({
-    darkTheme: {
-        backgroundColor: "#001f2c",
-        paddingHorizontal: 12,
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100%",
-        width: "100%"
-    }
-})
+// const styles = StyleSheet.create({
+//     darkTheme: {
+//         backgroundColor: "#001f2c",
+//         paddingHorizontal: 12,
+//         justifyContent: "center",
+//         alignItems: "center",
+//         height: "100%",
+//         width: "100%"
+//     }
+// })
